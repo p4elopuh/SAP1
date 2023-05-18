@@ -1,0 +1,19 @@
+@EndUserText.label: 'Access Control for ZI_KAT2_EXH'
+@MappingRole: true
+define role ZI_KAT2_EXH {
+    grant
+        select
+            on
+                ZI_KAT2_EXH
+                    where
+//                    CurrencyCode = 'BYN';
+//                    (  ExhStatus ) 
+//                    = aspect pfcg_auth (  ZKAT2OSTAT, ZKAT2OSTAT, ACTVT = '03' )
+//                    and
+//                    CurrencyCode = 'BYN';
+                    true;
+                                    
+//entity_element_1 = 'literal_value'
+//                        or entity_element_2 = aspect user;
+                        
+}

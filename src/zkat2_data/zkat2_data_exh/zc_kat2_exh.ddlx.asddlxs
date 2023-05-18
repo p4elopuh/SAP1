@@ -1,0 +1,176 @@
+@Metadata.layer: #CORE
+@UI: {
+    headerInfo: {
+        typeName: 'Exhibition',
+        typeNamePlural: 'Exhibitions',
+        title: {
+            type: #STANDARD,
+            label: 'Exhibition',
+//            value: 'ExhId' }
+            value: 'ExhTitle' },
+            description: {
+            value: 'ExhId' }
+            },
+        presentationVariant: [{
+            sortOrder: [{
+                by: 'ExhId',
+                direction: #DESC }],
+        visualizations: [{
+            type: #AS_LINEITEM }]
+            }]
+        }
+annotate view zc_kat2_exh with
+{
+  @UI.facet: [
+
+  //  { id: 'Exhibition',
+  //  purpose: #STANDARD,
+  //  type: #IDENTIFICATION_REFERENCE,
+  //  label: 'Exhibition',
+  //  position: 10 },
+
+    { id: 'Participation',
+    purpose: #STANDARD,
+    type: #LINEITEM_REFERENCE,
+    label: 'Participations',
+    position: 20,
+    targetElement: '_Participation'
+    },
+    {
+          id: 'ExhHeaderStartDate',
+          purpose: #HEADER,
+          type: #DATAPOINT_REFERENCE,
+          position: 10,
+          targetQualifier: 'StartDateData'
+      },
+      {
+          id: 'ExhHeaderEndDate',
+          purpose: #HEADER,
+          type: #DATAPOINT_REFERENCE,
+          position: 20,
+          targetQualifier: 'EndDateData'
+       },
+
+  {
+      label: 'General Information',
+      id: 'GeneralInfo',
+      type: #COLLECTION,
+      position: 10
+    },
+    {
+      label: 'General',
+      id: 'Exh',
+      type: #IDENTIFICATION_REFERENCE,
+      purpose: #STANDARD,
+      parentId: 'GeneralInfo',
+      position: 10
+    },
+    {
+      id: 'Fees',
+      purpose: #STANDARD,
+      type: #FIELDGROUP_REFERENCE,
+      parentId: 'GeneralInfo',
+      label: 'Fees',
+      position: 30,
+      targetQualifier: 'FeesGroup'
+    },
+    {
+      id: 'Dates',
+      purpose: #STANDARD,
+      type: #FIELDGROUP_REFERENCE,
+      parentId: 'GeneralInfo',
+      label: 'Dates',
+      position: 20,
+      targetQualifier: 'DatesGroup'
+    }
+
+  ]
+
+  @UI.hidden: true
+  @UI: { identification: [{ position: 1, label: 'Exhibition UUID' }]}
+  ExhUuid;
+
+  @UI: { lineItem: [{ position: 10, importance: #HIGH }]  }
+  //  @UI.selectionField: [{position: 10 }]
+  ExhId;
+
+  //@UI.hidden: true
+  //  @UI: { lineItem: [{ position: 20 }],
+
+  @UI.selectionField: [{position: 20 }]
+  @UI.identification: [{ position: 10 }]
+  ExhTitle;
+
+  @UI: { lineItem: [{ position: 30, importance: #MEDIUM }]
+  //  , identification: [{ position: 30 }]
+  }
+  @UI.selectionField: [{position: 30 }]
+  @UI.identification: [{ position: 20 }]
+  ExhPlace;
+
+  //@UI.hidden: true
+  //  @UI: { lineItem: [{ position: 40 }],
+  //    identification: [{ position: 40 }]}
+  @UI.selectionField: [{position: 40 }]
+  @UI.identification: [{ position: 30 }]
+  Country;
+
+  @UI: { lineItem: [{ position: 50, importance: #HIGH }]
+  //    ,  identification: [{ position: 50 }]
+     }
+  @UI.dataPoint: { qualifier: 'StartDateData', title: 'Start Date' }
+  @UI.fieldGroup: [{ qualifier: 'DatesGroup', position: 10 }]
+  ExhStartDate;
+
+  @UI: { lineItem: [{ position: 60, importance: #HIGH }]
+  //    , identification: [{ position: 60 }]
+     }
+  @UI.dataPoint: { qualifier: 'EndDateData', title: 'End Date' }
+  @UI.fieldGroup: [{ qualifier: 'DatesGroup', position: 20 }]
+  ExhEndDate;
+
+  @UI: { lineItem: [{ position: 70 }]       }
+  //  @UI.identification: [{ position: 40 }]
+  @UI.fieldGroup: [{ qualifier: 'FeesGroup', position: 10 }]
+  ExhFee;
+
+
+  @UI: { lineItem: [{ position: 80 }] }
+  //  @UI.identification: [{ position: 50 }]
+  @UI.fieldGroup: [{ qualifier: 'FeesGroup', position: 20 }]
+  TotalFee;
+
+  //    CurrencyCode;
+  //  @UI: {  lineItem:       [ { position: 90 } ] }
+  //  @UI.identification: [{ position: 50 }]
+  @UI.selectionField: [{position: 50 }]
+  @UI.textArrangement: #TEXT_ONLY
+  @UI: {  lineItem:       [ { position: 100 },
+                            { type: #FOR_ACTION, dataAction: 'acceptExh', label: 'Accept Exh' },
+                            { type: #FOR_ACTION, dataAction: 'closeExh', label: 'Close Exh' }
+                          ]
+                          ,
+       identification: [ { position: 100 },
+                            { type: #FOR_ACTION, dataAction: 'acceptExh', label: 'Accept Exh' },
+                            { type: #FOR_ACTION, dataAction: 'closeExh', label: 'Close Exh' }
+                          ]
+                          }
+
+  ExhStatus;
+
+  //  @UI.hidden: true
+  //  LastChangedAt;
+
+   @UI.hidden: true
+  @UI: {  lineItem:       [ { position: 110 } ]
+  //  ,          identification: [ { position: 110 } ]
+  }
+  LocalLastChangedAt;
+
+
+  //    /* Associations */
+  //    _Country;
+  //    _Currency;
+  //    _Participation;
+
+}

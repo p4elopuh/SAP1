@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_MSAG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <T100A>
+    <ARBGB>ZKAT2_MSG</ARBGB>
+    <MASTERLANG>E</MASTERLANG>
+    <STEXT>RAP messages</STEXT>
+   </T100A>
+   <T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKAT2_MSG</ARBGB>
+     <MSGNR>001</MSGNR>
+     <TEXT>Begin date &amp;1 must not be after End Date &amp;2 for Exh &amp;3</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKAT2_MSG</ARBGB>
+     <MSGNR>002</MSGNR>
+     <TEXT>Begin date &amp;1 must be on or after system date</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKAT2_MSG</ARBGB>
+     <MSGNR>003</MSGNR>
+     <TEXT>Awork &amp;1 unknown</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKAT2_MSG</ARBGB>
+     <MSGNR>004</MSGNR>
+     <TEXT>Exh &amp;1 unknown</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKAT2_MSG</ARBGB>
+     <MSGNR>005</MSGNR>
+     <TEXT>You are not authorized to perform this activity</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKAT2_MSG</ARBGB>
+     <MSGNR>006</MSGNR>
+     <TEXT>Author &amp;1 unknown</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKAT2_MSG</ARBGB>
+     <MSGNR>007</MSGNR>
+     <TEXT>Fill the Field</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZKAT2_MSG</ARBGB>
+     <MSGNR>008</MSGNR>
+     <TEXT>Year &amp;1 from the Future</TEXT>
+    </T100>
+   </T100>
+  </asx:values>
+ </asx:abap>
+</abapGit>

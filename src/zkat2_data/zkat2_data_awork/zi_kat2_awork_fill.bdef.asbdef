@@ -1,0 +1,75 @@
+managed;
+//strict ( 1 );
+with draft;
+
+define behavior for ZI_KAT2_AWORK_fill alias Awork
+implementation in class zbp_i_kat2_awork_fill unique
+persistent table zkat2_awork
+draft table zkat2_awork_d
+lock master total etag LastChangedAt
+//authorization master ( instance )
+etag master LocalLastChangedAt
+{
+  create;
+  update;
+  delete;
+
+  field ( numbering : managed, readonly ) AworkUuid;
+  field ( readonly ) AworkId, AuthorUuid;
+  //field ( readonly ) AuthorId,  AwStatus, AuthorFirstName, AuthorLastName;
+  field ( readonly ) LastChangedAt, LastChangedBy, CreatedAt, CreatedBy, LocalLastChangedAt;
+
+  field ( mandatory ) AuthorId, CreatYear, AwStatus, AwTitle, AwDescription;
+
+  action ( features : instance ) checkStatus result [1] $self;
+  internal action recheckStatus;
+
+  determination setInitialStatus on save { create; }
+  //determination setAuthor on modify { create; }
+  determination calculateAworkId on save { create; }
+
+  validation validateAuthor on save { field AuthorId; create; update; }
+  validation validateYear on save { field CreatYear; create; update;}
+  validation validateStatusOnD on save { field AwStatus; delete; }
+  validation validateStatusOnC on save { field AwStatus; create; }
+  validation validateStatusOnU on save { field AwStatus; update; create; }
+
+  draft determine action Prepare
+  {
+    validation validateAuthor;
+    validation validateYear ;
+    validation validateStatusOnD;
+    validation validateStatusOnC;
+    validation validateStatusOnU ;
+  }
+
+
+  mapping for zkat2_awork
+  {
+    AworkUuid = awork_uuid;
+    AworkId = awork_id;
+    AuthorUuid = author_uuid;
+    AuthorId = author_id;
+    AwTitle = aw_title;
+    AwDescription = aw_description;
+    AwStatus = aw_status;
+    CreatYear = creat_year;
+    CreatedBy = created_by;
+    CreatedAt = created_at;
+    LastChangedBy = last_changed_by;
+    LastChangedAt = last_changed_at;
+    LocalLastChangedAt = local_last_changed_at;
+
+  }
+
+  //  mapping for zkat2_awork_t
+  //  {
+  //Language = spras;
+  //    AworkId = awork_id;
+  //    AwTitle = aw_title;
+  //    AwDescription = aw_description;
+  //    LastChangedAt = last_changed_at;
+  //    LocalLastChangedAt = local_last_changed_at;
+  //  }
+
+}

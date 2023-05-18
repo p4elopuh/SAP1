@@ -1,0 +1,101 @@
+@Metadata.layer: #CORE
+@UI: {
+headerInfo: { typeName: 'Participation',
+typeNamePlural: 'Participations',
+title: {  type: #STANDARD, label: 'ParticipatioN', value: 'PartId' } }
+//presentationVariant: [{ sortOrder: [{ by: 'PartId', direction: #DESC }] }]
+}
+
+annotate view zc_kat2_part with
+{
+
+  @UI.facet: [
+  {
+          id: 'PartHeaderStatus',
+          purpose: #HEADER,
+          type: #DATAPOINT_REFERENCE,
+          position: 10,
+          targetQualifier: 'PartStatusData'
+      },
+  { id: 'Participation',
+    purpose: #STANDARD,
+    type: #IDENTIFICATION_REFERENCE,
+    label: 'Participation',
+    position: 10 }]
+
+  @UI.hidden: true
+  @UI: { identification: [{ position: 10, label: 'Participation UUID' }]}
+  PartUuid;
+
+  @UI.lineItem: [{position: 10  }]
+  PartId;
+
+  @UI.hidden: true
+  ExhUuid;
+
+  @UI.lineItem: [{position:  20 }]
+  @UI.identification: [{ position: 10 }]
+  ExhId;
+
+  @UI.hidden: true
+  AworkUuid;
+
+  @UI.lineItem: [{position: 30, label: 'Awork'  }]
+  @UI.identification: [{ position: 20 }]
+  AworkId;
+
+  @UI.hidden: true
+  @UI.lineItem: [{position:  40 }]
+  AwTitle;
+  
+@UI.hidden: true
+  //  @UI.lineItem: [{position: 50  }]
+//  @UI.identification: [{ position: 30 }]
+  AwDescription;
+
+  @UI.lineItem: [{position: 60  }]
+//  @UI.identification: [{ position: 40 }]
+  AuthorID;
+
+  @UI.hidden: true
+  @UI.lineItem: [{position:  70 }]
+  AuthorFirstName;
+
+  @UI.hidden: true
+  @UI.lineItem: [{position:  70 }]
+  AuthorLastName;
+
+
+  @UI.lineItem: [{position: 80  }]
+//  @UI.identification: [{ position: 50 }]
+  AwStatus;
+
+
+  @UI.lineItem: [{position: 90  }]
+  @UI.dataPoint: { qualifier: 'PartStatusData', title: 'Participation Status' }
+  @UI.identification: [{ position: 60 }]
+  PartStatus;
+
+  @UI.lineItem: [{position: 100  }]
+  PartStatusText;
+
+  @UI.lineItem: [{position: 110  }]
+  @UI.identification: [{ position: 70 }]
+  ExhFee;
+
+
+  //    CurrencyCode;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+
+
+  //    /* Associations */
+  //    _Awork;
+  //    _Awork_t;
+  //    _Currency;
+  //    _Exhibition;
+  //    _Pstatus;
+
+}

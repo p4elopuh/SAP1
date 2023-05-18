@@ -1,0 +1,10 @@
+@EndUserText.label: 'Service Definition for Auth App'
+define service Zui_kat2_auth {
+  expose ZC_KAT2_AUTHOR as Author;
+  expose ZC_KAT2_AWORK as Awork;
+  expose zi_kat2_astatus_sh as Astatus;
+  expose zr_kat2_awork_t as AworkT;
+  expose ZI_KAT2_AUTHOR_Phone_SH;
+  expose ZI_KAT2_AUTHOR_YEAR_SH;
+  expose ZI_KAT2_AUTHOR_SH;
+}

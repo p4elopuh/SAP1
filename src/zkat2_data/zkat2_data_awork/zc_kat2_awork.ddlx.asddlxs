@@ -1,0 +1,72 @@
+@Metadata.layer: #CORE
+@UI: {
+headerInfo: { typeName: 'Artwork',
+typeNamePlural: 'Artworks',
+title: {  type: #STANDARD, label: 'Artwork', value: 'AwTitle' } }
+}
+annotate view ZC_KAT2_AWORK
+    with 
+{
+@UI.facet: [
+  {
+          id: 'AworkHeaderStatus',
+          purpose: #HEADER,
+          type: #DATAPOINT_REFERENCE,
+          position: 10,
+          targetQualifier: 'AworkStatusData'
+      },
+  { id: 'Awork',
+    purpose: #STANDARD,
+    type: #IDENTIFICATION_REFERENCE,
+    label: 'Artwork',
+    position: 10 }]
+
+  @UI.hidden: true
+  @UI: { identification: [{ position: 1, label: 'Artwork UUID' }]}
+    AworkUuid;
+    
+    @UI.lineItem: [{position: 10  }]
+    AworkId;
+    @UI.hidden: true
+    @UI.lineItem: [{position: 20  }]
+    @UI.selectionField: [{position: 10 }]
+    @UI: { identification: [{ position: 10, label: 'Author ID' }]}
+    AuthorId;
+    @UI.hidden: true
+    AuthorUuid;
+    @UI.lineItem: [{position: 30  }]
+    @UI.identification: [{position: 20 }]
+    AwTitle;
+    @UI.lineItem: [{position: 40  }]
+    @UI.selectionField: [{position: 20 }]
+    @UI.identification: [{position: 30 }]
+    AwDescription;
+//    @UI.hidden: true
+//    @UI.lineItem: [{position: 50  }]
+//    AuthorName;
+
+@UI.hidden: true
+  @UI.lineItem: [{position:  50 }]
+  @UI.identification: [{position: 40 }]
+  AuthorFirstName;
+
+  @UI.hidden: true
+  @UI.lineItem: [{position:  50 }]
+  @UI.identification: [{position: 50 }]
+  AuthorLastName;
+
+    @UI.lineItem: [{position: 60  }]
+    @UI.dataPoint: { qualifier: 'AworkStatusData', title: 'Awork Status' }
+    @UI.selectionField: [{position: 30 }]
+    @UI.identification: [{position: 60 }]
+    AwStatus;
+    @UI.lineItem: [{position: 70  }]
+    @UI.selectionField: [{position: 40 }]
+    @UI.identification: [{position: 70 }]
+    CreatYear;
+    
+    @UI.hidden: true    
+    LocalLastChangedAt;
+    
+    
+}

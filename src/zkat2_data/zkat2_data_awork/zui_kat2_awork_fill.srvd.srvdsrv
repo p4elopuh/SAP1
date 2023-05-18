@@ -1,0 +1,10 @@
+@EndUserText.label: 'Service Definition for Awork App'
+define service Zui_KAT2_AWORK_FILL {
+  expose ZC_KAT2_AWORK_FILL as Awork;
+  expose ZI_KAT2_AUTHOR_SH as AuthorVH;
+  expose ZI_KAT2_Awork_SH as AworkVH;
+  expose ZI_KAT2_PART_f as Part;
+  expose ZI_KAT2_EXH_f as Exh;
+  expose zr_kat2_awork_t as AworkT;
+  expose zi_kat2_astatus_sh as Astatus;
+}

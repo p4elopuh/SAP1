@@ -1,0 +1,128 @@
+@Metadata.layer: #CORE
+
+@UI: {
+    headerInfo: {
+        typeName: 'Author',
+        typeNamePlural: 'Authors',
+        title: {
+            type: #STANDARD,
+            label: 'Author',
+//            value: 'ExhId' }
+//            value: 'AuthorId' },
+            value: 'AuthorFirstName' },
+            description: {
+            value: 'AuthorId' }
+            },
+        presentationVariant: [{
+            sortOrder: [{
+                by: 'AuthorId',
+                direction: #ASC }],
+        visualizations: [{
+            type: #AS_LINEITEM }]
+            }]
+        }
+
+annotate view ZC_KAT2_AUTHOR
+    with 
+{
+    @UI.facet: [
+
+  //  { id: 'Author',
+  //  purpose: #STANDARD,
+  //  type: #IDENTIFICATION_REFERENCE,
+  //  label: 'Author',
+  //  position: 10 },
+
+    { id: 'Awork',
+    purpose: #STANDARD,
+    type: #LINEITEM_REFERENCE,
+    label: 'Aworks',
+    position: 20,
+    targetElement: '_Awork'
+    },
+    {
+          id: 'AuthHeaderPhone',
+          purpose: #HEADER,
+          type: #DATAPOINT_REFERENCE,
+          position: 10,
+          targetQualifier: 'PhoneData'
+      },
+//      {
+//          id: 'AuthHeaderYear',
+//          purpose: #HEADER,
+//          type: #DATAPOINT_REFERENCE,
+//          position: 20,
+//          targetQualifier: 'YearData'
+//       },
+
+  {
+      label: 'General Information',
+      id: 'GeneralInfo',
+      type: #COLLECTION,
+      position: 10
+    },
+    {
+      label: 'General',
+      id: 'Exh',
+      type: #IDENTIFICATION_REFERENCE,
+      purpose: #STANDARD,
+      parentId: 'GeneralInfo',
+      position: 10
+    }
+//    ,
+//    {
+//      id: 'Fees',
+//      purpose: #STANDARD,
+//      type: #FIELDGROUP_REFERENCE,
+//      parentId: 'GeneralInfo',
+//      label: 'Fees',
+//      position: 20,
+//      targetQualifier: 'FeesGroup'
+//    }
+
+  ]
+    @UI.hidden: true
+  @UI: { identification: [{ position: 1, label: 'Author UUID' }]}
+    AuthorUuid;
+    
+     @UI.selectionField: [{position: 20 }]
+    @UI.lineItem: [{ position: 10, importance: #HIGH }]
+//    @UI.identification: [{ position: 10 }]
+    AuthorId;
+    
+//    @UI.hidden: true
+    @UI.lineItem: [{ position: 20 }]
+    AuthorFirstName;
+//    @UI.hidden: true
+    @UI.lineItem: [{ position: 30 }]
+    AuthorLastName;
+    
+//    @UI.lineItem: [{ position: 20, importance: #HIGH }]
+//    @UI.selectionField: [{position: 20 }]
+//    @UI.identification: [{ position: 20 }]
+//    AuthorName;
+    
+   @UI.lineItem: [{ position: 40, importance: #HIGH }]
+   @UI.identification: [{ position: 30 }]
+   @UI.selectionField: [{position: 30 }]
+   @UI.dataPoint: { qualifier: 'StartDateData', title: 'Start Date' }
+    BirthYear;
+    
+    @UI.lineItem: [{ position: 50, importance: #HIGH }]
+    @UI.identification: [{ position: 40 }]
+    @UI.selectionField: [{position: 40 }]
+    @UI.dataPoint: { qualifier: 'PhoneData', title: 'Phone Number' }
+    PhoneNumber;
+    
+    @UI.hidden: true
+    @UI.lineItem: [{ position: 60 }]
+    LastChangedAt;
+    
+    @UI.hidden: true
+    @UI.lineItem: [{ position: 70 }]
+    LocalLastChangedAt;
+    
+//    /* Associations */
+//    _Awork;
+    
+}

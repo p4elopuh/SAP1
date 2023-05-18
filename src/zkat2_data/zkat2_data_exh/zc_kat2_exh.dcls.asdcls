@@ -1,0 +1,11 @@
+@EndUserText.label: 'Access Control for ZC_KAT2_EXH'
+@MappingRole: true
+define role ZC_KAT2_EXH {
+    grant
+        select
+            on
+                ZC_KAT2_EXH
+                    where
+                        inheriting conditions from entity ZI_KAT2_EXH;
+                        
+}

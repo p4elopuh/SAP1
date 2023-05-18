@@ -1,0 +1,110 @@
+managed; //implementation in class zbp_i_kat2_exh unique;
+//strict ( 1 );
+with draft;
+
+define behavior for zi_kat2_exh alias Exhibition
+implementation in class zbp_i_kat2_exh unique
+persistent table zkat2_aexh
+draft table zkat2_dexh
+lock master total etag LastChangedAt
+authorization master ( instance )
+etag master LocalLastChangedAt
+{
+  create;
+  update;
+  delete;
+  association _Participation { create; with draft; }
+
+  field ( numbering : managed, readonly ) ExhUuid;
+  field ( readonly ) ExhId;
+  field ( readonly ) TotalFee;
+  field ( readonly ) LastChangedBy, LastChangedAt, CreatedBy, CreatedAt, LocalLastChangedAt;
+
+  field ( mandatory ) ExhTitle, ExhPlace, ExhStartDate, ExhEndDate;
+
+  action ( features : instance ) acceptExh result [1] $self;
+  action ( features : instance ) closeExh result [1] $self;
+  internal action recalcTotalFee;
+
+  determination setInitialStatus on modify { create; }
+  determination calculateTotalFee on modify { field ExhFee, CurrencyCode; }
+  determination calculateExhId on save { create; }
+
+  validation validateDates on save { field ExhStartDate, ExhEndDate; create; }
+  validation validateText on save { field ExhTitle, ExhPlace; create; }
+
+  draft determine action Prepare
+  {
+    validation validateDates;
+    validation validateText;
+  }
+
+
+  mapping for ZKAT2_AEXH
+  {
+    ExhUuid = exh_uuid;
+    ExhId = exh_id;
+    ExhTitle = exh_title;
+    ExhPlace = exh_place;
+    Country = country;
+    ExhStartDate = exh_start_date;
+    ExhEndDate = exh_end_date;
+    ExhFee = exh_fee;
+    TotalFee = total_fee;
+    ExhStatus = exh_status;
+    CurrencyCode = currency;
+    CreatedBy = created_by;
+    CreatedAt = created_at;
+    LastChangedBy = last_changed_by;
+    LastChangedAt = last_changed_at;
+    LocalLastChangedAt = local_last_changed_at;
+
+
+  }
+
+}
+
+define behavior for zi_kat2_part alias Participation
+implementation in class zbp_i_kat2_part unique
+persistent table zkat2_apart
+draft table zkat2_dpart
+lock dependent by _Exhibition
+authorization dependent by _Exhibition
+etag master LocalLastChangedAt
+{
+  update;
+  delete;
+
+  association _Exhibition { with draft; }
+
+  field ( numbering : managed, readonly ) PartUuid;
+  field ( readonly ) ExhUuid, ExhId, PartId;
+  field ( readonly ) AworkUuid;
+  field ( readonly ) LastChangedBy, CreatedBy, LocalLastChangedAt; // LastChangedAt, CreatedAt,
+  field ( mandatory ) AworkId;
+
+  determination calculatePartId on modify { create; }
+//  determination calculateTotalFee on modify { field ExhFee, CurrencyCode; }
+  determination setExhId on modify { create; }
+  determination setFee on save { create; }
+
+
+
+  mapping for zkat2_apart
+  {
+    PartUuid = part_uuid;
+    PartId = part_id;
+    AworkUuid = awork_uuid;
+    AworkId = awork_id;
+        ExhUuid = exh_uuid;
+    ExhId = exh_id;
+    PartStatus = part_status;
+    CreatedBy = created_by;
+    CreatedAt = created_at;
+    LastChangedBy = last_changed_by;
+    LastChangedAt = last_changed_at;
+    LocalLastChangedAt = local_last_changed_at;
+
+  }
+
+}

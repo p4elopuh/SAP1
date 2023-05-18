@@ -1,0 +1,11 @@
+@EndUserText.label: 'Service Definition for Exhibition App'
+define service Zui_kat2_exh {
+  expose zc_kat2_exh as Exhibition;
+  expose zc_kat2_part as Participation;
+  expose zi_kat2_author as Author;
+  expose zi_kat2_awork as Awork;
+  expose zi_kat2_estatus_sh as Estatus;
+  expose zi_kat2_pstatus_sh as Pstatus;
+  expose I_Currency as Currency;
+  expose I_Country as Country;
+}
