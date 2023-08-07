@@ -207,11 +207,11 @@ CLASS lhc_Awork IMPLEMENTATION.
                                           )
                         %element-CreatYear = if_abap_behv=>mk-on )
           TO reported-awork.
-        DATA lv_year TYPE sy-datum.
-       lv_year = sy-datum.
+        DATA lv_curr_datum TYPE D.
+       lv_curr_datum = cl_abap_context_info=>get_system_date( ).
 *       cl_abap_context_info=>get_system_date( ).
 
-      ELSEIF awork-CreatYear GT sy-datum+0(4).
+      ELSEIF awork-CreatYear GT lv_curr_datum+0(4).
         APPEND VALUE #( %tky = awork-%tky ) TO failed-awork.
         APPEND VALUE #( %tky               = awork-%tky
                         %state_area = 'VALIDATE_YEAR'

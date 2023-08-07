@@ -19,11 +19,6 @@ ENDCLASS.
 CLASS ZCL_KAT2_DATA_GEN_EXH IMPLEMENTATION.
 
 
-  METHOD if_oo_adt_classrun~main.
-    me->fill_exh(  ).
-  ENDMETHOD.
-
-
   METHOD fill_exh.
 
     DATA: lt_exh TYPE TABLE OF zkat2_aexh.
@@ -72,5 +67,10 @@ CLASS ZCL_KAT2_DATA_GEN_EXH IMPLEMENTATION.
     DELETE FROM zkat2_aexh.
     INSERT zkat2_aexh FROM TABLE @lt_exh.
 
+  ENDMETHOD.
+
+
+  METHOD if_oo_adt_classrun~main.
+    me->fill_exh(  ).
   ENDMETHOD.
 ENDCLASS.

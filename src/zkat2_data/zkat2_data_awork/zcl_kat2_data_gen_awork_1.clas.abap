@@ -19,11 +19,6 @@ ENDCLASS.
 CLASS ZCL_KAT2_DATA_GEN_AWORK_1 IMPLEMENTATION.
 
 
-  METHOD if_oo_adt_classrun~main.
-    me->fill_awork(  ).
-  ENDMETHOD.
-
-
   METHOD fill_awork.
 
     DATA: lt_awork TYPE TABLE OF zkat2_awork.
@@ -120,5 +115,10 @@ CLASS ZCL_KAT2_DATA_GEN_AWORK_1 IMPLEMENTATION.
     COMMIT WORK.
 
 
+  ENDMETHOD.
+
+
+  METHOD if_oo_adt_classrun~main.
+    me->fill_awork(  ).
   ENDMETHOD.
 ENDCLASS.

@@ -19,11 +19,6 @@ ENDCLASS.
 CLASS ZCL_KAT2_DATA_GEN_ASTATUS_1 IMPLEMENTATION.
 
 
-  METHOD if_oo_adt_classrun~main.
-    me->fill_astatus(  ).
-  ENDMETHOD.
-
-
   METHOD fill_astatus.
 
     DATA: lt_astatus TYPE TABLE OF zkat2_astatus.
@@ -45,5 +40,10 @@ CLASS ZCL_KAT2_DATA_GEN_ASTATUS_1 IMPLEMENTATION.
     DELETE FROM zkat2_astatus.
     INSERT zkat2_astatus FROM TABLE @lt_astatus.
 COMMIT WORK.
+  ENDMETHOD.
+
+
+  METHOD if_oo_adt_classrun~main.
+    me->fill_astatus(  ).
   ENDMETHOD.
 ENDCLASS.

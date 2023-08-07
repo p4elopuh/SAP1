@@ -1,5 +1,5 @@
 managed; //implementation in class zbp_i_kat2_exh unique;
-//strict ( 1 );
+strict ( 1 );
 with draft;
 
 define behavior for zi_kat2_exh alias Exhibition
@@ -38,6 +38,10 @@ etag master LocalLastChangedAt
     validation validateDates;
     validation validateText;
   }
+draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
 
 
   mapping for ZKAT2_AEXH

@@ -19,12 +19,6 @@ ENDCLASS.
 CLASS ZCL_KAT2_DATA_GEN_PART_1 IMPLEMENTATION.
 
 
-  METHOD if_oo_adt_classrun~main.
-    me->fill_part(  ).
-    out->write('Participation Data inserted').
-  ENDMETHOD.
-
-
   METHOD fill_part.
 
     DATA: lt_part TYPE TABLE OF zkat2_apart.
@@ -100,5 +94,11 @@ CLASS ZCL_KAT2_DATA_GEN_PART_1 IMPLEMENTATION.
 
 
 
+  ENDMETHOD.
+
+
+  METHOD if_oo_adt_classrun~main.
+    me->fill_part(  ).
+    out->write('Participation Data inserted').
   ENDMETHOD.
 ENDCLASS.

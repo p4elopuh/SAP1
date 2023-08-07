@@ -19,11 +19,6 @@ ENDCLASS.
 CLASS ZCL_KAT2_DATA_GEN_PSTATUS IMPLEMENTATION.
 
 
-  METHOD if_oo_adt_classrun~main.
-  me->fill_pstatus(  ).
-  ENDMETHOD.
-
-
   METHOD fill_pstatus.
 
     DATA: lt_pstatus TYPE TABLE OF zkat2_pstatus.
@@ -43,5 +38,10 @@ CLASS ZCL_KAT2_DATA_GEN_PSTATUS IMPLEMENTATION.
     DELETE FROM zkat2_pstatus.
     INSERT zkat2_pstatus FROM TABLE @lt_pstatus.
 
+  ENDMETHOD.
+
+
+  METHOD if_oo_adt_classrun~main.
+  me->fill_pstatus(  ).
   ENDMETHOD.
 ENDCLASS.

@@ -1,5 +1,5 @@
 projection;
-//strict ( 1 ); //Uncomment this line in order to enable strict mode 2.
+strict ( 1 ); //Uncomment this line in order to enable strict mode 2.
 //The strict mode has two variants (strict(1), strict(2)) and is prerequisite to be future proof regarding syntax and to be able to release your BO.
 use draft;
 
@@ -11,4 +11,10 @@ define behavior for ZC_KAT2_AWORK_FILL alias Awork
   use delete;
 
   use action checkStatus;
+
+  use action Prepare;
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
 }

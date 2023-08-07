@@ -1,5 +1,5 @@
 projection;
-//strict ( 1 );
+strict ( 1 );
 use draft;
 
 define behavior for zc_kat2_exh alias Exhibition //alias <alias_name>
@@ -13,6 +13,13 @@ define behavior for zc_kat2_exh alias Exhibition //alias <alias_name>
 
   use action acceptExh;
   use action closeExh;
+
+  use action Prepare;
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+
 }
 
 define behavior for zc_kat2_part alias Participation //alias <alias_name>
